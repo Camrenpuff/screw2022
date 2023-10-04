@@ -7,6 +7,15 @@ public class SceneTransitionManger : MonoBehaviour
 {
     //引用?
     public FadeScreen fadeScreen;
+    public int sceneIndex;
+
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        GoToScene(sceneIndex);
+        print("转场");
+    }
 
     public void GoToScene(int sceneIndex)
     {

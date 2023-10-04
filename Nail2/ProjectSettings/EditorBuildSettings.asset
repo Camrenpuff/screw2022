@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Demo_Lockoff 1.unity
     guid: 3bb39ea7b1be7664d9dfbcb5454ef1d5
+  - enabled: 1
+    path: Assets/_Scenes/Scene2_Res.unity
+    guid: 05192fa7d4e70424f96e451a10b28c81
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ae665516907df8e4ab9eee609e5a41ed, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 143dba5baed05de4fa79a63ca4aa38f1, type: 2}

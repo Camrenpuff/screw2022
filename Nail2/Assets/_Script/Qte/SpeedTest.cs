@@ -9,18 +9,18 @@ public class SpeedTest : MonoBehaviour
     
     
     public Image circle;
-    //Í¼Æ¬Ö±½ÓÓÃ!!!!
+    //å›¾ç‰‡ç›´æ¥ç”¨!!!!
 
     public float fillA = 0;
     private bool grabbing = false;
     public float timeThreshold = 0;
-    public Rigidbody rigidbody;
+    public Rigidbody rigidBody;
 
 
     //void Awake()
     //{
     //    GameObject.Instantiate(qtCircle);
-    //    //µÃµ½×Ó¶ÔÏóÉÏ¹ÒÔØµÄ½Å±¾
+    //    //å¾—åˆ°å­å¯¹è±¡ä¸ŠæŒ‚è½½çš„è„šæœ¬
     //    GameObject.Instantiate(qtCircle).GetComponentInChildren<Image>().fillAmount = fillA;
 
     //}
@@ -38,11 +38,11 @@ public class SpeedTest : MonoBehaviour
 
    
 
-    //ÏòQT_Event·¢ÏûÏ¢
+    //å‘QT_Eventå‘æ¶ˆæ¯
     void Update()
     {
-        //ÇóËÙ¶È
-        speed = Mathf.Abs(rigidbody.velocity.y);
+        //æ±‚é€Ÿåº¦
+        speed = Mathf.Abs(rigidBody.velocity.y);
         //print(speed);
         //print(rigidbody.velocity.y);
        
@@ -50,9 +50,9 @@ public class SpeedTest : MonoBehaviour
         if (speed > 1 && grabbing == true)
         {
            
-            //print("¿ìËÙ");
+            //print("å¿«é€Ÿ");
             fillA += 0.005f;
-            //print("ÏÖÔÚµÄ°Ù·Ö±ÈÊÇ" + fillA);
+            //print("ç°åœ¨çš„ç™¾åˆ†æ¯”æ˜¯" + fillA);
         }
         timeThreshold += Time.deltaTime;
 
@@ -71,14 +71,14 @@ public class SpeedTest : MonoBehaviour
     void TestFun()
     {
         grabbing = true;
-        //print("ÎÒ×¥µ½ÂİË¿Í·");
+        //print("æˆ‘æŠ“åˆ°èºä¸å¤´");
     }
 
     //controller putting down
     void TestFun2()
     {
         grabbing = false;
-        //print("ÎÒ·ÅÏÂÂİË¿Í·");
+        //print("æˆ‘æ”¾ä¸‹èºä¸å¤´");
         fillA= 0;
     }
 

@@ -8,7 +8,7 @@ public class FadeScreen : MonoBehaviour
     public float fadeDuration = 2f;
     public Color fadeColor;
     private Renderer rend;
-    public MeshRenderer meshRend;
+    public MeshRenderer mesh;
 
 
 
@@ -33,7 +33,7 @@ public class FadeScreen : MonoBehaviour
 
     private void NotRender()
     {
-        meshRend.enabled = false;
+        mesh.enabled = false;
     }
 
     public void Fade(float alphaIn,float alphaOut)
