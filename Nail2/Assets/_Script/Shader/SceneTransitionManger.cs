@@ -22,6 +22,14 @@ public class SceneTransitionManger : MonoBehaviour
         StartCoroutine(GoToSceneRoutine(sceneIndex));
     }
     // Start is called before the first frame update
+
+
+    public void GoToSceneButton()
+    {
+        GoToScene(sceneIndex);
+        print("×ª³¡");
+    }
+
     IEnumerator GoToSceneRoutine(int sceneIndex)
     {
         fadeScreen.FadeOut();
@@ -30,4 +38,6 @@ public class SceneTransitionManger : MonoBehaviour
         //Launch the new scene
         SceneManager.LoadScene(sceneIndex);
     }
+
+
 }

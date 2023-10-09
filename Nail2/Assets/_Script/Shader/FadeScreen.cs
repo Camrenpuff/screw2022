@@ -21,16 +21,20 @@ public class FadeScreen : MonoBehaviour
 
     public void FadeIn()
     {
+        mesh.enabled = true;
         Fade(1, 0);
         Invoke("NotRender", fadeDuration + 1f);
     }
 
     public void FadeOut()
     {
+        mesh.enabled = true;
         Fade(0, 1);
         
     }
 
+
+    //·ÀÖ¹ÕÚµ²ray interactor²ÄÖÊ
     private void NotRender()
     {
         mesh.enabled = false;
