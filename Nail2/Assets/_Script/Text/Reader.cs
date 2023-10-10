@@ -15,7 +15,7 @@ public class Reader : MonoBehaviour
     {
         TTS.Init();
         ReadText();
-
+        //Debug.Log(initiallySelected);
     }
 
     // Update is called once per frame
@@ -27,11 +27,13 @@ public class Reader : MonoBehaviour
             StopAllCoroutines();
             ReadText();
         }
+       
     }
 
     void ReadText()
     {
         StartCoroutine(TextReaderCoroutine());
+        
     }
 
     void ReadSelectable(Selectable selectable)
@@ -40,6 +42,7 @@ public class Reader : MonoBehaviour
         if (selectable is Button)
         {
             text = selectable.GetComponentInChildren<Text>().text;
+            Debug.Log(text);
         }
         TTS.Say(text, speaker);
     }
@@ -47,6 +50,7 @@ public class Reader : MonoBehaviour
     IEnumerator TextReaderCoroutine()
     {
         Selectable selectableToRead = initiallySelected;
+        //Debug.Log(selectableToRead);
         while (selectableToRead != null)
         {
             ReadSelectable(selectableToRead);
