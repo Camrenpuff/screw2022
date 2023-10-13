@@ -571,6 +571,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 2.101
       objectReference: {fileID: 0}
+    - target: {fileID: 7082895334985467503, guid: 89a13610c86f8dc4fa182011c36bbff7, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

@@ -9,6 +9,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Glass
     second: {fileID: 2100000, guid: 2caa64181f9513e4f97224fd556f3006, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: digital_display_sides
+    second: {fileID: 2100000, guid: 01c11dc0e000b504cb6ba589c1b2c481, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: digital_displays
+    second: {fileID: 2100000, guid: 01c11dc0e000b504cb6ba589c1b2c481, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

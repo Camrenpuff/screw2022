@@ -102,18 +102,24 @@ namespace Febucci.UI
 
         private void OnTriggerEnter(Collider col)
         {
-            GetComponent<Renderer>().enabled = true;
-            print("Collision!");
-            StartShowingText(true);
+            if (col.CompareTag("Player"))
+            { 
+                GetComponent<Renderer>().enabled = true;
+                print("Collision!");
+                StartShowingText(true);
+            }
         }
 
 
         private void OnTriggerExit(Collider other)
         {
-          
-            print("Collision!我说话");
-            StartDisappearingText();
-            //GetComponent<Renderer>().enabled = false;
+            if (other.CompareTag("Player"))
+            {
+                print("Collision!我说话");
+                StartDisappearingText();
+                //GetComponent<Renderer>().enabled = false;
+
+            }
 
         }
 

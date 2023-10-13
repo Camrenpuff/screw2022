@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TriggerAnimation2 : MonoBehaviour
 {
-
+    
     [SerializeField] private List<GameObject> keyNPC ;
     
 

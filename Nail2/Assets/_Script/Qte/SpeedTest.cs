@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SpeedTest : MonoBehaviour
 {
     private float speed;
+    public bool isTeleporting;
     
     
     public Image circle;
@@ -64,6 +65,14 @@ public class SpeedTest : MonoBehaviour
         }
         
         circle.fillAmount = fillA;
+
+        //成功上香
+        if (fillA >= 1)
+        {
+            isTeleporting = true;
+            print("成功上香");
+            
+        }
 
     }
 

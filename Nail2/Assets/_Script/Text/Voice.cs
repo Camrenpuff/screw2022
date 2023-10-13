@@ -17,6 +17,7 @@ public class Voice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //防止同时读取两句话
         if (!speaker.audioSource.isPlaying)
         {
 
@@ -26,7 +27,12 @@ public class Voice : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        TTS.Say(voice, speaker);
-        print("说话");
+        if (other.CompareTag("Player"))
+        {
+            TTS.Say(voice, speaker);
+            print("说话");
+        }
     }
+          
+    
 }

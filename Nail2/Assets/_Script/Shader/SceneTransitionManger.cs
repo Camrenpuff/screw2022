@@ -10,7 +10,7 @@ public class SceneTransitionManger : MonoBehaviour
     public int sceneIndex;
 
 
-
+    //碰撞的情况
     private void OnTriggerEnter(Collider other)
     {
         GoToScene(sceneIndex);
@@ -21,9 +21,9 @@ public class SceneTransitionManger : MonoBehaviour
     {
         StartCoroutine(GoToSceneRoutine(sceneIndex));
     }
-    // Start is called before the first frame update
+    
 
-
+    //按钮的状况
     public void GoToSceneButton()
     {
         GoToScene(sceneIndex);
@@ -38,6 +38,8 @@ public class SceneTransitionManger : MonoBehaviour
         //Launch the new scene
         SceneManager.LoadScene(sceneIndex);
     }
+
+    
 
 
 }

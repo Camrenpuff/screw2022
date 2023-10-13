@@ -9,8 +9,8 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 public class SpeedTest_Head : MonoBehaviour
 {
     //private float speed;
-    
-    
+
+    private bool isSubstract = true;
     public Image circle;
     //图片直接用!!!!
 
@@ -27,9 +27,11 @@ public class SpeedTest_Head : MonoBehaviour
    
     //播放动画
     public InputActionManager inputActionManager;
-    public PlayableDirector director;
+    //public PlayableDirector director;
     public GameObject rug;
     public GameObject screw;
+
+    public FadeScreen fadeScreen;
 
 
 
@@ -100,7 +102,7 @@ public class SpeedTest_Head : MonoBehaviour
         }
         timeThreshold += Time.deltaTime;
 
-        if (timeThreshold > 0.05f )
+        if (timeThreshold > 0.05f && isSubstract)
         {
             timeThreshold= 0;
             fillA -= subtract;
@@ -114,31 +116,40 @@ public class SpeedTest_Head : MonoBehaviour
         
         circle.fillAmount = fillA;
 
-        if(fillA > 1)
+        if(fillA > 1 )
         {
+            //停止减少
+            isSubstract = false;
+
             eventSuccess = "y";
             Debug.Log(eventSuccess);
 
-            inputActionManager.enabled = false;
-            director.Play();
-            
+            fadeScreen.FadeOut();
+            Invoke("FinishFadeOut", (float)fadeScreen.fadeDuration);//一次就可以
+            fillA = 1;
 
+            //inputActionManager.enabled = false;
+            //director.Play();
 
-            Invoke("FinishInvoke", (float)director.duration);
-           
+            //Invoke("FinishInvoke", (float)director.duration);
+
 
         }
 
 
     }
 
-
-    void FinishInvoke()
+    void FinishFadeOut()
     {
-        print("不能动");
-        inputActionManager.enabled = true;
+        fadeScreen.FadeIn();
         screw.transform.position = rug.transform.position;
     }
+    //void FinishInvoke()
+    //{
+    //    print("不能动");
+    //    inputActionManager.enabled = true;
+    //    screw.transform.position = rug.transform.position;
+    //}
 
 
 
