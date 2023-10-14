@@ -29,8 +29,9 @@ public class EnableTeleport1 : MonoBehaviour
     private void Start()
     {
         //第一个粒子激活
-        voicePlateGroup.transform.GetChild(0).Find("FX_Hologram_Base").GetComponent<ParticleSystem>().Play();
-        voicePlateGroup.transform.GetChild(0).Find("plate").GetComponent<TeleportationAnchor>().enabled = true;
+        Transform first = voicePlateGroup.transform.GetChild(0);
+        first.Find("FX_Hologram_Base").GetComponent<ParticleSystem>().Play();
+        first.Find("plate").GetComponent<TeleportationAnchor>().enabled = true;
         //if (!islast)
         //{
         //    //otherTeleport.transform.GetComponent<TeleportationAnchor>().enabled = false;
@@ -98,8 +99,9 @@ public class EnableTeleport1 : MonoBehaviour
         //下一个粒子出现并且可传送
         if (i < voicePlateGroup.transform.childCount - 1)
         {
-            voicePlateGroup.transform.GetChild(i + 1).Find("plate").GetComponent<Collider>().enabled = true;
-            voicePlateGroup.transform.GetChild(i + 1).Find("FX_Hologram_Base").GetComponent<ParticleSystem>().Play();
+            Transform nextPlate = voicePlateGroup.transform.GetChild(i + 1);
+            nextPlate.Find("plate").GetComponent<Collider>().enabled = true;
+            nextPlate.Find("FX_Hologram_Base").GetComponent<ParticleSystem>().Play();
         }
 
         ////自己的粒子消失
