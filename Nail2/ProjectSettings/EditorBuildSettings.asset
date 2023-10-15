@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Demo_Lockoff 1.unity
     guid: 3bb39ea7b1be7664d9dfbcb5454ef1d5
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/Scene2_Res.unity
     guid: 05192fa7d4e70424f96e451a10b28c81
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/TransScene.unity
     guid: 1614efca08d045f47bdc84be3b649a27
   m_configObjects:

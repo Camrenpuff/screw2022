@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class SpeedTest : MonoBehaviour
 {
     private float speed;
-    public bool isTeleporting;
-    
-    
+    [HideInInspector] public bool isTeleporting;//必须是public,因为被引用
+
+
     public Image circle;
     //图片直接用!!!!
 

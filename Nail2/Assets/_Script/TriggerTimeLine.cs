@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using Cinemachine;
+
 
 
 
@@ -12,14 +14,31 @@ public class TriggerTimeLine : MonoBehaviour
     public PlayableDirector director;
     public GameObject rug;
     public GameObject? head;
-    public GameObject mainCamera;
-    
+    //public GameObject mainCamera;
+
     //public InputActionManager inputActionManager;
-    
+
     public FadeScreen fadeScreen;
     private float screenfadeTime;
     private float animTime;
-    // Start is called before the first frame update
+
+    //[SerializeField] CinemachineVirtualCamera FirstPersonCam;
+    //[SerializeField] CinemachineVirtualCamera FirstSceneCam;
+
+    //private void OnEnable()
+    //{
+    //    CameraSwitcher.Register(FirstPersonCam);
+    //    CameraSwitcher.Register(FirstSceneCam);
+    //    CameraSwitcher.SwitchCamera(FirstPersonCam);
+    //}
+
+    //private void OnDisable()
+    //{
+    //    CameraSwitcher.Register(FirstPersonCam);
+    //    CameraSwitcher.Register(FirstSceneCam);
+    //}
+
+
     void Start()
     {
         screenfadeTime = fadeScreen.fadeDuration;
@@ -52,11 +71,12 @@ public class TriggerTimeLine : MonoBehaviour
         yield return new WaitForSeconds(screenfadeTime);
         fadeScreen.FadeIn();
         yield return new WaitForSeconds(screenfadeTime);
-        mainCamera.SetActive(false);
+        //CameraSwitcher.SwitchCamera(FirstSceneCam);
+
         //this.transform.position = rug.transform.position;
         director.Play();
         yield return new WaitForSeconds(animTime);
-        mainCamera.SetActive(true);
+        
         fadeScreen.FadeOut();
         yield return new WaitForSeconds(screenfadeTime);
         fadeScreen.FadeIn();

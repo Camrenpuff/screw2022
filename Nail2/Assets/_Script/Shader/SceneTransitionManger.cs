@@ -8,20 +8,14 @@ public class SceneTransitionManger : MonoBehaviour
     //引用?
     public FadeScreen fadeScreen;
     public int sceneIndex;
-
+    public Collider rugCo;
 
     //碰撞的情况
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider rugCo)
     {
         GoToScene(sceneIndex);
         print("转场");
     }
-
-    public void GoToScene(int sceneIndex)
-    {
-        StartCoroutine(GoToSceneRoutine(sceneIndex));
-    }
-    
 
     //按钮的状况
     public void GoToSceneButton()
@@ -30,6 +24,18 @@ public class SceneTransitionManger : MonoBehaviour
         print("转场");
     }
 
+   
+
+
+
+
+
+
+    public void GoToScene(int sceneIndex)
+    {
+        StartCoroutine(GoToSceneRoutine(sceneIndex));
+    }
+    
     IEnumerator GoToSceneRoutine(int sceneIndex)
     {
         fadeScreen.FadeOut();

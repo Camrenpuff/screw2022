@@ -7,7 +7,7 @@ using System;
 public class Voice : MonoBehaviour
 {
     public TTSSpeaker speaker;
-    public String voice;
+    [TextArea] public String voice;
     // Start is called before the first frame update
     void Start()
     {

@@ -21,13 +21,16 @@ public class SpeedTest_Head : MonoBehaviour
     private bool Kowtow = false;
     private float timeThreshold = 0;
     public string eventSuccess = "n";
-    public Material press;
-    public Material pressExit;
-    public MeshRenderer rend;
-   
+    //public Material press;
+    //public Material pressExit;
+    //public MeshRenderer rend;
+
     //播放动画
-    public InputActionManager inputActionManager;
+    //public InputActionManager inputActionManager;
     //public PlayableDirector director;
+    public bool isInMainScene;
+    public SceneTransitionManger sceneTransitionManger;
+
     public GameObject rug;
     public GameObject screw;
 
@@ -52,7 +55,7 @@ public class SpeedTest_Head : MonoBehaviour
         {
             Kowtow = true;
             print("我磕头");
-            rend.material= press;
+            //rend.material= press;
         }
     }
 
@@ -62,7 +65,7 @@ public class SpeedTest_Head : MonoBehaviour
         if (other.CompareTag("Head"))
         {
             StartCoroutine("DelayTime");
-            rend.material = pressExit;
+            //rend.material = pressExit;
 
         }
     }
@@ -72,7 +75,7 @@ public class SpeedTest_Head : MonoBehaviour
         if (other.CompareTag("Head"))
         {
             StartCoroutine("DelayTime");
-            rend.material = pressExit;
+            //rend.material = pressExit;
             
         }
     }
@@ -141,8 +144,18 @@ public class SpeedTest_Head : MonoBehaviour
 
     void FinishFadeOut()
     {
-        fadeScreen.FadeIn();
-        screw.transform.position = rug.transform.position;
+        if (isInMainScene)
+        {
+            fadeScreen.FadeIn();
+            screw.transform.position = rug.transform.position;
+            screw.transform.eulerAngles = rug.transform.localEulerAngles;
+        }
+        else
+        {
+            sceneTransitionManger.GoToScene(1);
+        }
+
+
     }
     //void FinishInvoke()
     //{
