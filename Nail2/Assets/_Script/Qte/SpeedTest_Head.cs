@@ -1,3 +1,4 @@
+using ReadSpeaker;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -29,12 +30,20 @@ public class SpeedTest_Head : MonoBehaviour
     //public InputActionManager inputActionManager;
     //public PlayableDirector director;
     public bool isInMainScene;
-    public SceneTransitionManger sceneTransitionManger;
+    public SceneTransitionManger? sceneTransitionManger;
+    
 
-    public GameObject rug;
+    public GameObject? rug;
     public GameObject screw;
 
     public FadeScreen fadeScreen;
+
+    public AudioSource audioSource;
+   
+
+    [TextArea] public String voice;
+    public TTSSpeaker speaker;
+
 
 
 
@@ -43,7 +52,7 @@ public class SpeedTest_Head : MonoBehaviour
        
         
      
-        //print(circle.fillAmount);
+        //audio= GetComponent<AudioSource>();
          
 
         
@@ -56,6 +65,8 @@ public class SpeedTest_Head : MonoBehaviour
             Kowtow = true;
             print("我磕头");
             //rend.material= press;
+            //audio.clip = hitClip;
+            audioSource.Play();
         }
     }
 
@@ -125,16 +136,11 @@ public class SpeedTest_Head : MonoBehaviour
             isSubstract = false;
 
             eventSuccess = "y";
+            
             Debug.Log(eventSuccess);
-
-            fadeScreen.FadeOut();
-            Invoke("FinishFadeOut", (float)fadeScreen.fadeDuration);//一次就可以
-            fillA = 1;
-
-            //inputActionManager.enabled = false;
-            //director.Play();
-
-            //Invoke("FinishInvoke", (float)director.duration);
+            fillA = 1;//一次就可以
+            
+            StartCoroutine(FinishFadeOut());
 
 
         }
@@ -142,21 +148,43 @@ public class SpeedTest_Head : MonoBehaviour
 
     }
 
-    void FinishFadeOut()
+    IEnumerator FinishFadeOut()
     {
+        fadeScreen.FadeOut();
         if (isInMainScene)
         {
-            fadeScreen.FadeIn();
+            TTS.Say(voice, speaker);
+            yield return new WaitForSeconds(fadeScreen.fadeDuration);
             screw.transform.position = rug.transform.position;
             screw.transform.eulerAngles = rug.transform.localEulerAngles;
+            yield return new WaitForSeconds(0.02f);
+            fadeScreen.FadeIn();
         }
-        else
+        if (!isInMainScene)
         {
+            TTS.Say(voice, speaker);
+            yield return new WaitForSeconds(fadeScreen.fadeDuration);
             sceneTransitionManger.GoToScene(1);
         }
 
-
+        
     }
+        
+
+    //void FinishFadeOut()
+    //{
+    //    if (isInMainScene)
+    //    {
+    //        fadeScreen.FadeIn();
+    //        screw.transform.position = rug.transform.position;
+    //        screw.transform.eulerAngles = rug.transform.localEulerAngles;
+    //    }
+    //    else
+    //    {
+    //        sceneTransitionManger.GoToScene(1);
+    //    }
+
+    //}
     //void FinishInvoke()
     //{
     //    print("不能动");

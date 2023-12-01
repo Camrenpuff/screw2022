@@ -33,6 +33,8 @@ public class Voice : MonoBehaviour
             print("Ëµ»°");
         }
     }
+
+    
           
     
 }

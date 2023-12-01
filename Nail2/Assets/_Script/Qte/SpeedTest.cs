@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SpeedTest : MonoBehaviour
 {
     private float speed;
-    [HideInInspector] public bool isTeleporting;//必须是public,因为被引用
+    [HideInInspector] public bool isTeleporting=false;//必须是public,因为被引用
 
 
     public Image circle;
@@ -14,8 +15,11 @@ public class SpeedTest : MonoBehaviour
 
     public float fillA = 0;
     private bool grabbing = false;
-    public float timeThreshold = 0;
+    [HideInInspector] public float timeThreshold = 0;
     public Rigidbody rigidBody;
+    
+   
+    
 
 
     //void Awake()
@@ -28,12 +32,6 @@ public class SpeedTest : MonoBehaviour
 
     void Start()
     {
-       
-        
-     
-        print(circle.fillAmount);
-         
-
         
     }
 
@@ -43,10 +41,14 @@ public class SpeedTest : MonoBehaviour
     void Update()
     {
         //求速度
-        speed = Mathf.Abs(rigidBody.velocity.y);
+        if (grabbing)
+        {
+            speed = Mathf.Abs(rigidBody.velocity.y);
+        }
+        //print(circle.fillAmount);
         //print(speed);
         //print(rigidbody.velocity.y);
-       
+
 
         if (speed > 1 && grabbing == true)
         {
@@ -64,16 +66,24 @@ public class SpeedTest : MonoBehaviour
             
         }
         
-        circle.fillAmount = fillA;
-
         //成功上香
         if (fillA >= 1)
         {
             isTeleporting = true;
             print("成功上香");
-            
+            StartCoroutine("DelayTime");
         }
+        
+        circle.fillAmount = fillA;
 
+    }
+
+
+    IEnumerator DelayTime()
+    {
+        yield return new WaitForSeconds(1);
+       
+        isTeleporting = false;
     }
 
     //controller grabbing event

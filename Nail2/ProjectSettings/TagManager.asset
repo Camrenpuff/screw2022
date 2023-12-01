@@ -9,6 +9,11 @@ TagManager:
   - Key
   - plate
   - "\u76D8\u5B50"
+  - GrabProp
+  - GrabProp1
+  - GrabProp2
+  - Animals
+  - Tele
   layers:
   - Default
   - TransparentFX

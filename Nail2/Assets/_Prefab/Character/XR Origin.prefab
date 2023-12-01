@@ -1202,7 +1202,6 @@ GameObject:
   - component: {fileID: 7893433158104521313}
   - component: {fileID: 1916905128435777194}
   - component: {fileID: 6154941926439282892}
-  - component: {fileID: 3025013599889839852}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Player
@@ -1442,22 +1441,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3025013599889839852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3276268935749452006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 096f4579d34ffcc489f443bcffec26c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  director: {fileID: 0}
-  rug: {fileID: 0}
-  head: {fileID: 0}
-  fadeScreen: {fileID: 0}
 --- !u!1 &3625982961622056200
 GameObject:
   m_ObjectHideFlags: 0
@@ -2299,7 +2282,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   j: 3
   k: 9
-  speedTest: {fileID: 0}
+  l: 100
+  speedTest1: {fileID: 0}
+  speedTest2: {fileID: 0}
+  speedTest3: {fileID: 0}
   voicePlateGroup: {fileID: 0}
 --- !u!1 &6711415319984702488
 GameObject:
@@ -2647,7 +2633,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   j: 3
   k: 9
-  speedTest: {fileID: 0}
+  l: 100
+  speedTest1: {fileID: 0}
+  speedTest2: {fileID: 0}
+  speedTest3: {fileID: 0}
   voicePlateGroup: {fileID: 0}
 --- !u!1 &7020555271312651663
 GameObject:
@@ -3770,7 +3759,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   j: 3
   k: 9
-  speedTest: {fileID: 0}
+  l: 100
+  speedTest1: {fileID: 0}
+  speedTest2: {fileID: 0}
+  speedTest3: {fileID: 0}
   voicePlateGroup: {fileID: 0}
 --- !u!1 &9145777800596223377
 GameObject:

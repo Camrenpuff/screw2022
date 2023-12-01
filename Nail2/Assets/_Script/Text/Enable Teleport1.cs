@@ -15,7 +15,10 @@ public class EnableTeleport1 : MonoBehaviour
     //第几个需要上香
     public int j;
     public int k;
-    public SpeedTest speedTest;
+    public int l =100;
+    public SpeedTest speedTest1;
+    public SpeedTest speedTest2;
+    public SpeedTest? speedTest3;
     private bool isQT = false;//是否需要上香
 
 
@@ -45,12 +48,34 @@ public class EnableTeleport1 : MonoBehaviour
 
     void Update()
     {
-        print(isQT && speedTest.isTeleporting);
-        if (isQT && speedTest.isTeleporting)
+        //print(isQT && speedTest1.isTeleporting);
+        //Debug.Log("isQT" + isQT);
+        //Debug.Log("1"+speedTest1.isTeleporting);
+        //Debug.Log("2" + speedTest2.isTeleporting);
+        //Debug.Log("3"+speedTest3.isTeleporting);
+        if (isQT && speedTest1.isTeleporting)
         {
             //确保只运行一次
             Nextpoint();
             isQT= false;
+            print("传送1");
+        }
+
+        if (isQT && speedTest2.isTeleporting)
+        {
+
+            Nextpoint();
+            isQT = false;
+            print("传送2");
+            print(" isQT && speedTest2.isTeleporting");
+        }
+
+        if (isQT && speedTest3.isTeleporting)
+        {
+            Nextpoint();
+            isQT = false;
+            print("传送3");
+
         }
 
     }
@@ -60,13 +85,7 @@ public class EnableTeleport1 : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
 
-        //if (!islast && other.CompareTag("Player") && !isQT)
-        //{
-
-        //    print("可以传送");
-        //    Nextpoint();
-
-        //}
+        
         if (other.CompareTag("盘子"))
         {
             
@@ -76,14 +95,17 @@ public class EnableTeleport1 : MonoBehaviour
             i = voicePlate.GetSiblingIndex();
 
             //判断是否为关键词句
-            if(j==i||k==i)
+            if(j == i|| k == i || l == i)
             {
                 isQT = true;
+                print("j");
             }
+            
             else
             {
                 //处理下一个传送点
                 Nextpoint();
+                print(i);
             }
         }
     }

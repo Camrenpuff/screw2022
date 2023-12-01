@@ -10,13 +10,11 @@ using Cinemachine;
 //timeline运行,并且对屏幕进行fadeout和fadeIn,挂在主角身上,抓取物体send给主角message
 public class TriggerTimeLine : MonoBehaviour
 {
-
-    public PlayableDirector director;
-    public GameObject rug;
-    public GameObject? head;
-    //public GameObject mainCamera;
-
-    //public InputActionManager inputActionManager;
+    public GameObject XROrigin;
+    public List<PlayableDirector> director = new List<PlayableDirector>();
+    public List<GameObject> rugDes = new List<GameObject>();
+    private int i=0;
+    
 
     public FadeScreen fadeScreen;
     private float screenfadeTime;
@@ -42,7 +40,8 @@ public class TriggerTimeLine : MonoBehaviour
     void Start()
     {
         screenfadeTime = fadeScreen.fadeDuration;
-        animTime = (float)director.duration;
+        //animTime = (float)director.duration;
+        
 
     }
 
@@ -54,32 +53,35 @@ public class TriggerTimeLine : MonoBehaviour
 
     void OnSelectProp()
     {
-        print("选择");
-
+        
+        if (i < 3)
+        {
+            StartCoroutine("StartFadeScreen");
+        }
         //inputActionManager.enabled = false;
         //director.Play();
-        StartCoroutine("StartFadeScreen");
-
-        //Invoke("FinishInvoke", (float)director.duration+ 5f);
-
+        
     }
 
 
     public IEnumerator StartFadeScreen()
     {
+        
         fadeScreen.FadeOut();
         yield return new WaitForSeconds(screenfadeTime);
         fadeScreen.FadeIn();
-        yield return new WaitForSeconds(screenfadeTime);
+        //yield return new WaitForSeconds(screenfadeTime/2);
         //CameraSwitcher.SwitchCamera(FirstSceneCam);
 
-        //this.transform.position = rug.transform.position;
-        director.Play();
+        XROrigin.transform.position = rugDes[i].transform.position;
+        director[i].Play();
         yield return new WaitForSeconds(animTime);
         
         fadeScreen.FadeOut();
         yield return new WaitForSeconds(screenfadeTime);
         fadeScreen.FadeIn();
+
+        i += 1;//下一个动画
     }
 
     ////void FinishInvoke()
